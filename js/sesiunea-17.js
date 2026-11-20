@@ -225,6 +225,24 @@ const evenimente12 = [
   { nume: "Meetup", locuri: 35, pret: 0 },
 ];
 
+function creeazaCard(eveniment) {
+  const card = document.createElement("div");
+
+  const h3 = document.createElement("h3");
+  h3.textContent = eveniment.nume;
+
+  const info11 = document.createElement("p");
+  info11.textContent =
+    "eveniment.locuri + ' locuri · ' + eveniment.pret + ' lei'";
+
+  card.appendChild(h3);
+  card.appendChild(info11);
+
+  return card10;
+}
+
+creazaCard(evenimente12[0]);
+
 /* ===== Exercițiul 13 · SINGUR · 1 min · Randăm lista din array =====
    CE FACI: Refaci lista din pagină din datele din array, cu funcția creeazaCard.
    PAȘI:
@@ -242,6 +260,9 @@ const evenimente12 = [
      după ele. */
 
 console.log("--- Exercițiul 13 ---");
+
+lista10.innerHTML = "";
+evenimente12.forEach((eveniment) => lista10.appendChild(CreateCard(eveniment)));
 
 /* ===== Exercițiul 14 · SINGUR · 3 min · Evenimentele tale pe pagină =====
    CE FACI: Pui pe pagină evenimentele tale, cu contor și cu cardul plin marcat.
@@ -269,6 +290,15 @@ const evenimenteleMele = [
   { nume: "Meetup", locuri: 35, ocupate: 34, pret: 0 },
   { nume: "Concert", locuri: 50, ocupate: 50, pret: 70 },
 ];
+
+const lista14 = document.querySelector("#lista-evenimente");
+lista14.innerHTML = "";
+evenimenteleMele.forEach((eveniment) => {
+  const card = creeazaCard(eveniment);
+  if (eveniment.ocupate === eveniment.locuri) card.classList.add("epuizat");
+  lista14.appendChild(card);
+});
+document.querySelector("#contor").textContent = evenimenteleMele.length;
 
 /* ===== Exercițiul 15 · GHIDAT · 3 min · Detectivul: eroare în Console =====
    CE FACI: Codul are o greșeală care dă eroare în Console: o descoperi cu Copilot în modul
@@ -313,8 +343,8 @@ console.log("--- Exercițiul 15 ---");
      cod și te uiți în pagină. Dacă nu merge, o respingi. */
 
 console.log("--- Exercițiul 16 ---");
-// const descriere16 = document.querySelector("#descriere");
-// descriere16.textcontent = "Am găsit greșeala!";
+const descriere16 = document.querySelector("#descriere");
+descriere16.textcontent = "Am găsit greșeala!";
 
 /* ===== TEMĂ DE ACASĂ · Lista filtrată și contorul =====
    CE FACI: Pagina evenimente.html arată doar evenimentele cu locuri libere și câte sunt.
